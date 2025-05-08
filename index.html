@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png" type="image/png">
+  <meta name="theme-color" content="#3498db">
+  <title>Sashvini Pharmaa Order System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="splash" id="splash">
+    <h1>Sashvini Pharmaa Order System</h1>
+  </div>
+
+  <div class="dashboard" id="dashboard">
+    <h2>Dashboard</h2>
+    <div class="dash-buttons">
+      <button class="dash-button" onclick="showOrder()">Order</button>
+      <button class="dash-button" onclick="showEdit()">Edit</button>
+      <button class="dash-button" onclick="showProducts()">Products</button>
+    </div>
+  </div>
+
+  <div class="order-section" id="orderSection">
+    <input type="text" id="customer" placeholder="Customer Name">
+    <div class="search-box">
+      <input type="text" id="productSearch" placeholder="Search Product" oninput="filterProducts()">
+      <div class="search-results" id="productResults"></div>
+    </div>
+    <input type="number" id="qty" placeholder="Quantity">
+    <input type="text" id="bouns" placeholder="Bonus">
+    <input type="text" id="price" placeholder="Price" readonly>
+    <button onclick="addProduct()">Add</button>
+
+    <table id="summaryTable">
+      <thead>
+        <tr><th>Product</th><th>Qty</th><th>Bonus</th><th>Action</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <button onclick="sendWhatsApp()">Send WhatsApp</button>
+    <button class="clear-btn" onclick="clearOrder()">Clear</button>
+    <button class="back-btn" onclick="goToDashboard()">Back</button>
+  </div>
+
+  <div class="edit-section" id="editSection">
+    <input type="file" id="csvFile" accept=".csv">
+    <button onclick="uploadCSV()">Upload CSV</button>
+    <h3>Add New Product</h3>
+    <input type="text" id="newProductName" placeholder="Product Name">
+    <input type="text" id="newProductPrice" placeholder="Product Price">
+    <button onclick="addSingleProduct()">Add Product</button>
+    <button class="clear-btn" onclick="clearProductList()">Clear</button>
+    <button class="back-btn" onclick="goToDashboard()">Back</button>
+  </div>
+
+  <!-- Optional: Product List View -->
+  <div class="edit-section" id="productSection" style="display: none;">
+    <h3>Product List</h3>
+    <table>
+      <thead><tr><th>Product</th><th>Price</th></tr></thead>
+      <tbody id="productListBody"></tbody>
+    </table>
+    <button class="back-btn" onclick="goToDashboard()">Back</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
